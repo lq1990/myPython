@@ -1,0 +1,4037 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<PMML xmlns="http://www.dmg.org/PMML-4_3" xmlns:data="http://jpmml.org/jpmml-model/InlineTable" version="4.3">
+	<Header>
+		<Application name="JPMML-SkLearn" version="1.5.35"/>
+		<Timestamp>2020-04-23T10:41:02Z</Timestamp>
+	</Header>
+	<MiningBuildTask>
+		<Extension>PMMLPipeline(steps=[('classifier', XGBClassifier(base_score=0.5, booster=None, colsample_bylevel=1,
+              colsample_bynode=1, colsample_bytree=1, gamma=0, gpu_id=-1,
+              importance_type='gain', interaction_constraints=None,
+              learning_rate=0.3, max_delta_step=0, max_depth=6,
+              min_child_weight=1, missing=nan, monotone_constraints=None,
+              n_estimators=100, n_jobs=4, nthread=4, num_parallel_tree=1,
+              objective='multi:softprob', random_state=1000, reg_alpha=0,
+              reg_lambda=1, scale_pos_weight=None, seed=1000, silent=0,
+              subsample=1, tree_method=None, validate_parameters=False,
+              verbosity=None))])</Extension>
+	</MiningBuildTask>
+	<DataDictionary>
+		<DataField name="y" optype="categorical" dataType="integer">
+			<Value value="0"/>
+			<Value value="1"/>
+			<Value value="2"/>
+		</DataField>
+		<DataField name="x1" optype="continuous" dataType="float"/>
+		<DataField name="x2" optype="continuous" dataType="float"/>
+		<DataField name="x3" optype="continuous" dataType="float"/>
+		<DataField name="x4" optype="continuous" dataType="float"/>
+	</DataDictionary>
+	<MiningModel functionName="classification" algorithmName="XGBoost (GBTree)" x-mathContext="float">
+		<MiningSchema>
+			<MiningField name="y" usageType="target"/>
+			<MiningField name="x1"/>
+			<MiningField name="x2"/>
+			<MiningField name="x3"/>
+			<MiningField name="x4"/>
+		</MiningSchema>
+		<Segmentation multipleModelMethod="modelChain" x-missingPredictionTreatment="returnMissing">
+			<Segment id="1">
+				<True/>
+				<MiningModel functionName="regression" x-mathContext="float">
+					<MiningSchema>
+						<MiningField name="x3"/>
+					</MiningSchema>
+					<Output>
+						<OutputField name="xgbValue(0)" optype="continuous" dataType="float" isFinalResult="false"/>
+					</Output>
+					<Targets>
+						<Target rescaleConstant="0.5"/>
+					</Targets>
+					<Segmentation multipleModelMethod="sum">
+						<Segment id="1">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x3"/>
+								</MiningSchema>
+								<Node score="0.4212766">
+									<True/>
+									<Node score="-0.21818185">
+										<SimplePredicate field="x3" operator="greaterOrEqual" value="2.45"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="2">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x3"/>
+								</MiningSchema>
+								<Node score="0.29123792">
+									<True/>
+									<Node score="-0.19521686">
+										<SimplePredicate field="x3" operator="greaterOrEqual" value="2.45"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="3">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x3"/>
+								</MiningSchema>
+								<Node score="0.23332451">
+									<True/>
+									<Node score="-0.17985979">
+										<SimplePredicate field="x3" operator="greaterOrEqual" value="2.45"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="4">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x3"/>
+								</MiningSchema>
+								<Node score="0.20081928">
+									<True/>
+									<Node score="-0.16860592">
+										<SimplePredicate field="x3" operator="greaterOrEqual" value="2.45"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="5">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x3"/>
+								</MiningSchema>
+								<Node score="0.18003412">
+									<True/>
+									<Node score="-0.1599562">
+										<SimplePredicate field="x3" operator="greaterOrEqual" value="2.45"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="6">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x3"/>
+								</MiningSchema>
+								<Node score="0.16536829">
+									<True/>
+									<Node score="-0.15290031">
+										<SimplePredicate field="x3" operator="greaterOrEqual" value="2.45"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="7">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x3"/>
+								</MiningSchema>
+								<Node score="0.1540843">
+									<True/>
+									<Node score="-0.1467199">
+										<SimplePredicate field="x3" operator="greaterOrEqual" value="2.45"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="8">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x3"/>
+								</MiningSchema>
+								<Node score="0.1446109">
+									<True/>
+									<Node score="-0.14066812">
+										<SimplePredicate field="x3" operator="greaterOrEqual" value="2.45"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="9">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x3"/>
+								</MiningSchema>
+								<Node score="0.13617256">
+									<True/>
+									<Node score="-0.13471016">
+										<SimplePredicate field="x3" operator="greaterOrEqual" value="2.45"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="10">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x3"/>
+								</MiningSchema>
+								<Node score="0.12829764">
+									<True/>
+									<Node score="-0.12890337">
+										<SimplePredicate field="x3" operator="greaterOrEqual" value="2.45"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="11">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x3"/>
+								</MiningSchema>
+								<Node score="0.120630085">
+									<True/>
+									<Node score="-0.122731194">
+										<SimplePredicate field="x3" operator="greaterOrEqual" value="2.45"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="12">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x3"/>
+								</MiningSchema>
+								<Node score="0.11311821">
+									<True/>
+									<Node score="-0.11639349">
+										<SimplePredicate field="x3" operator="greaterOrEqual" value="2.45"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="13">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x3"/>
+								</MiningSchema>
+								<Node score="0.10576298">
+									<True/>
+									<Node score="-0.11037479">
+										<SimplePredicate field="x3" operator="greaterOrEqual" value="2.45"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="14">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x3"/>
+								</MiningSchema>
+								<Node score="0.098973714">
+									<True/>
+									<Node score="-0.104500405">
+										<SimplePredicate field="x3" operator="greaterOrEqual" value="2.45"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="15">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x3"/>
+								</MiningSchema>
+								<Node score="0.09249716">
+									<True/>
+									<Node score="-0.098412566">
+										<SimplePredicate field="x3" operator="greaterOrEqual" value="2.45"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="16">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x3"/>
+								</MiningSchema>
+								<Node score="0.086359955">
+									<True/>
+									<Node score="-0.09267278">
+										<SimplePredicate field="x3" operator="greaterOrEqual" value="2.45"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="17">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x3"/>
+								</MiningSchema>
+								<Node score="0.08121937">
+									<True/>
+									<Node score="-0.08719785">
+										<SimplePredicate field="x3" operator="greaterOrEqual" value="2.45"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="18">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x3"/>
+								</MiningSchema>
+								<Node score="0.07296152">
+									<True/>
+									<Node score="-0.081322536">
+										<SimplePredicate field="x3" operator="greaterOrEqual" value="3.15"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="19">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="-0.007862677">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="20">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="-0.007499702">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="21">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="-0.0074604927">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="22">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="-0.00705824">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="23">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="-0.0067663565">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="24">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="-0.006559787">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="25">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="-0.0066474425">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="26">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="-0.006439095">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="27">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="-0.0064291693">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="28">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="-0.006802181">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="29">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="-0.006871627">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="30">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="-0.0069346987">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="31">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="-0.006944683">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="32">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="-0.0071110553">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="33">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="-0.005761736">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="34">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="-0.0058854637">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="35">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="-0.0061265198">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="36">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="-0.004951072">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="37">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="-0.005267837">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="38">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="-0.00539374">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="39">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="-0.0055037797">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="40">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="-0.005652012">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="41">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="-0.004585591">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="42">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="-0.004754643">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="43">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="-0.004899783">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="44">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="-0.0050226003">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="45">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="-0.005346951">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="46">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="-0.005630633">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="47">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="-0.005665504">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="48">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="-0.0059100618">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="49">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="-0.006120257">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="50">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="-0.0062996945">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="51">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="-0.006248065">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="52">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="-0.0064046085">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="53">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="-0.006255676">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="54">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="-0.0051004286">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="55">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="-0.005093367">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="56">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="-0.004065154">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="57">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="-0.004399856">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="58">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="-0.0046801586">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="59">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="-0.0047234525">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="60">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="-0.0036079667">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="61">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="-0.00383737">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="62">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="-0.0039997925">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="63">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="-0.0029711525">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="64">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="-0.0032136682">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="65">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="-0.0022992578">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="66">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="-0.002599616">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="67">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="-0.0017769936">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="68">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="-0.0021183805">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="69">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="-0.0013705883">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="70">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="-0.0017402561">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="71">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="-0.002032603">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="72">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="-0.0012953554">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="73">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="-0.0016236656">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="74">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="-9.5273973E-4">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="75">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="-0.0013058041">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="76">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="-6.893982E-4">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="77">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="-0.001057889">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="78">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="-4.871235E-4">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="79">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="-8.6452405E-4">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="80">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="-3.3204365E-4">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="81">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="-7.1287976E-4">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="82">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="-1.9627032E-4">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="83">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="-5.873026E-4">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="84">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="-9.242536E-5">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="85">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="-3.543907E-4">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="86">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="1.05251274E-4">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="87">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="-3.0570285E-4">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="88">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="1.579287E-4">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="89">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="-2.5392004E-4">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="90">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="1.9698043E-4">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="91">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="-2.1390202E-4">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="92">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="2.1966369E-4">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="93">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="-1.8160856E-4">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="94">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="2.1554713E-4">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="95">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="-1.892504E-4">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="96">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="2.4066899E-4">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="97">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="-1.6216036E-4">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="98">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="2.5296834E-4">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="99">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="-1.3987813E-4">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="100">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="2.8811794E-4">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+					</Segmentation>
+				</MiningModel>
+			</Segment>
+			<Segment id="2">
+				<True/>
+				<MiningModel functionName="regression" x-mathContext="float">
+					<MiningSchema>
+						<MiningField name="x1"/>
+						<MiningField name="x2"/>
+						<MiningField name="x3"/>
+						<MiningField name="x4"/>
+					</MiningSchema>
+					<Output>
+						<OutputField name="xgbValue(1)" optype="continuous" dataType="float" isFinalResult="false"/>
+					</Output>
+					<Targets>
+						<Target rescaleConstant="0.5"/>
+					</Targets>
+					<Segmentation multipleModelMethod="sum">
+						<Segment id="1">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x1"/>
+									<MiningField name="x3"/>
+								</MiningSchema>
+								<Node score="-0.21063831">
+									<True/>
+									<Node score="0.12857142">
+										<SimplePredicate field="x3" operator="greaterOrEqual" value="2.45"/>
+										<Node score="0.031034475">
+											<SimplePredicate field="x3" operator="greaterOrEqual" value="4.8500004"/>
+											<Node score="-0.20826449">
+												<SimplePredicate field="x3" operator="greaterOrEqual" value="5.05"/>
+											</Node>
+										</Node>
+										<Node score="0.42352945">
+											<SimplePredicate field="x1" operator="greaterOrEqual" value="5.05"/>
+										</Node>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="2">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x1"/>
+									<MiningField name="x3"/>
+									<MiningField name="x4"/>
+								</MiningSchema>
+								<Node score="-0.18736596">
+									<True/>
+									<Node score="0.09565698">
+										<SimplePredicate field="x3" operator="greaterOrEqual" value="2.45"/>
+										<Node score="0.051702257">
+											<SimplePredicate field="x3" operator="greaterOrEqual" value="4.8500004"/>
+											<Node score="-0.18867661">
+												<SimplePredicate field="x4" operator="greaterOrEqual" value="1.75"/>
+											</Node>
+										</Node>
+										<Node score="0.29296175">
+											<SimplePredicate field="x1" operator="greaterOrEqual" value="5.05"/>
+										</Node>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="3">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x2"/>
+									<MiningField name="x3"/>
+									<MiningField name="x4"/>
+								</MiningSchema>
+								<Node score="-0.1710475">
+									<True/>
+									<Node score="0.24228272">
+										<SimplePredicate field="x3" operator="greaterOrEqual" value="2.45"/>
+										<Node score="-0.17109211">
+											<SimplePredicate field="x3" operator="greaterOrEqual" value="5.05"/>
+										</Node>
+										<Node score="-0.13045089">
+											<SimplePredicate field="x4" operator="greaterOrEqual" value="1.6500001"/>
+											<Node score="0.100521006">
+												<SimplePredicate field="x2" operator="greaterOrEqual" value="2.9"/>
+											</Node>
+										</Node>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="4">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x2"/>
+									<MiningField name="x3"/>
+									<MiningField name="x4"/>
+								</MiningSchema>
+								<Node score="-0.15861562">
+									<True/>
+									<Node score="0.2084742">
+										<SimplePredicate field="x3" operator="greaterOrEqual" value="2.45"/>
+										<Node score="-0.15907878">
+											<SimplePredicate field="x3" operator="greaterOrEqual" value="5.05"/>
+										</Node>
+										<Node score="-0.12119279">
+											<SimplePredicate field="x4" operator="greaterOrEqual" value="1.6500001"/>
+											<Node score="0.09223445">
+												<SimplePredicate field="x2" operator="greaterOrEqual" value="2.9"/>
+											</Node>
+										</Node>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="5">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x2"/>
+									<MiningField name="x3"/>
+									<MiningField name="x4"/>
+								</MiningSchema>
+								<Node score="-0.14840661">
+									<True/>
+									<Node score="0.18725723">
+										<SimplePredicate field="x3" operator="greaterOrEqual" value="2.45"/>
+										<Node score="-0.14814581">
+											<SimplePredicate field="x3" operator="greaterOrEqual" value="5.05"/>
+										</Node>
+										<Node score="-0.11645129">
+											<SimplePredicate field="x4" operator="greaterOrEqual" value="1.6500001"/>
+											<Node score="0.08123614">
+												<SimplePredicate field="x2" operator="greaterOrEqual" value="2.9"/>
+											</Node>
+										</Node>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="6">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x2"/>
+									<MiningField name="x3"/>
+									<MiningField name="x4"/>
+								</MiningSchema>
+								<Node score="-0.13940555">
+									<True/>
+									<Node score="0.172569">
+										<SimplePredicate field="x3" operator="greaterOrEqual" value="2.45"/>
+										<Node score="-0.13955308">
+											<SimplePredicate field="x3" operator="greaterOrEqual" value="5.05"/>
+										</Node>
+										<Node score="-0.10877649">
+											<SimplePredicate field="x4" operator="greaterOrEqual" value="1.6500001"/>
+											<Node score="0.07594681">
+												<SimplePredicate field="x2" operator="greaterOrEqual" value="2.9"/>
+											</Node>
+										</Node>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="7">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x1"/>
+									<MiningField name="x3"/>
+									<MiningField name="x4"/>
+								</MiningSchema>
+								<Node score="-0.13097967">
+									<True/>
+									<Node score="0.16151473">
+										<SimplePredicate field="x3" operator="greaterOrEqual" value="2.45"/>
+										<Node score="-0.13166906">
+											<SimplePredicate field="x3" operator="greaterOrEqual" value="5.05"/>
+										</Node>
+										<Node score="-0.030991536">
+											<SimplePredicate field="x4" operator="greaterOrEqual" value="1.6500001"/>
+											<Node score="0.015174893">
+												<SimplePredicate field="x1" operator="greaterOrEqual" value="6.0"/>
+											</Node>
+										</Node>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="8">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x1"/>
+									<MiningField name="x3"/>
+									<MiningField name="x4"/>
+								</MiningSchema>
+								<Node score="-0.12276657">
+									<True/>
+									<Node score="0.15133116">
+										<SimplePredicate field="x3" operator="greaterOrEqual" value="2.45"/>
+										<Node score="-0.12290069">
+											<SimplePredicate field="x3" operator="greaterOrEqual" value="5.05"/>
+										</Node>
+										<Node score="-0.026994452">
+											<SimplePredicate field="x4" operator="greaterOrEqual" value="1.6500001"/>
+											<Node score="0.012380558">
+												<SimplePredicate field="x1" operator="greaterOrEqual" value="6.0"/>
+											</Node>
+										</Node>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="9">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x1"/>
+									<MiningField name="x3"/>
+									<MiningField name="x4"/>
+								</MiningSchema>
+								<Node score="-0.11458054">
+									<True/>
+									<Node score="0.14239435">
+										<SimplePredicate field="x3" operator="greaterOrEqual" value="2.45"/>
+										<Node score="-0.11431088">
+											<SimplePredicate field="x3" operator="greaterOrEqual" value="5.05"/>
+										</Node>
+										<Node score="-0.023215195">
+											<SimplePredicate field="x4" operator="greaterOrEqual" value="1.6500001"/>
+											<Node score="0.009794687">
+												<SimplePredicate field="x1" operator="greaterOrEqual" value="6.0"/>
+											</Node>
+										</Node>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="10">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x1"/>
+									<MiningField name="x3"/>
+									<MiningField name="x4"/>
+								</MiningSchema>
+								<Node score="-0.10639336">
+									<True/>
+									<Node score="0.13513428">
+										<SimplePredicate field="x3" operator="greaterOrEqual" value="2.45"/>
+										<Node score="-0.107043825">
+											<SimplePredicate field="x3" operator="greaterOrEqual" value="5.05"/>
+										</Node>
+										<Node score="-0.024615522">
+											<SimplePredicate field="x4" operator="greaterOrEqual" value="1.6500001"/>
+											<Node score="0.013448771">
+												<SimplePredicate field="x1" operator="greaterOrEqual" value="6.0"/>
+											</Node>
+										</Node>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="11">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x1"/>
+									<MiningField name="x3"/>
+									<MiningField name="x4"/>
+								</MiningSchema>
+								<Node score="-0.09828742">
+									<True/>
+									<Node score="0.12708181">
+										<SimplePredicate field="x3" operator="greaterOrEqual" value="2.45"/>
+										<Node score="-0.098721705">
+											<SimplePredicate field="x3" operator="greaterOrEqual" value="5.05"/>
+										</Node>
+										<Node score="-0.020918677">
+											<SimplePredicate field="x4" operator="greaterOrEqual" value="1.6500001"/>
+											<Node score="0.012102103">
+												<SimplePredicate field="x1" operator="greaterOrEqual" value="6.0"/>
+											</Node>
+										</Node>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="12">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x1"/>
+									<MiningField name="x2"/>
+									<MiningField name="x3"/>
+									<MiningField name="x4"/>
+								</MiningSchema>
+								<Node score="-0.09039084">
+									<True/>
+									<Node score="0.014815914">
+										<SimplePredicate field="x3" operator="greaterOrEqual" value="2.45"/>
+										<Node score="-0.019187879">
+											<SimplePredicate field="x4" operator="greaterOrEqual" value="1.75"/>
+											<Node score="-0.08413109">
+												<SimplePredicate field="x1" operator="greaterOrEqual" value="6.2"/>
+											</Node>
+										</Node>
+										<Node score="0.1140457">
+											<SimplePredicate field="x2" operator="greaterOrEqual" value="2.65"/>
+										</Node>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="13">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x1"/>
+									<MiningField name="x4"/>
+								</MiningSchema>
+								<Node score="-0.07057878">
+									<True/>
+									<Node score="0.10175977">
+										<SimplePredicate field="x1" operator="greaterOrEqual" value="5.45"/>
+										<Node score="-0.061896075">
+											<SimplePredicate field="x4" operator="greaterOrEqual" value="1.75"/>
+										</Node>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="14">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x1"/>
+									<MiningField name="x3"/>
+									<MiningField name="x4"/>
+								</MiningSchema>
+								<Node score="-0.064541414">
+									<True/>
+									<Node score="-0.080970585">
+										<SimplePredicate field="x3" operator="greaterOrEqual" value="5.05"/>
+									</Node>
+									<Node score="0.119850166">
+										<SimplePredicate field="x1" operator="greaterOrEqual" value="5.45"/>
+										<Node score="-0.018853415">
+											<SimplePredicate field="x4" operator="greaterOrEqual" value="1.75"/>
+										</Node>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="15">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x1"/>
+									<MiningField name="x3"/>
+								</MiningSchema>
+								<Node score="-0.059219964">
+									<True/>
+									<Node score="0.10337415">
+										<SimplePredicate field="x1" operator="greaterOrEqual" value="5.45"/>
+										<Node score="-0.09250493">
+											<SimplePredicate field="x3" operator="greaterOrEqual" value="4.8500004"/>
+											<Node score="0.03250857">
+												<SimplePredicate field="x1" operator="greaterOrEqual" value="6.6"/>
+											</Node>
+										</Node>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="16">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x1"/>
+									<MiningField name="x3"/>
+								</MiningSchema>
+								<Node score="-0.058022052">
+									<True/>
+									<Node score="0.087909214">
+										<SimplePredicate field="x1" operator="greaterOrEqual" value="5.1499996"/>
+										<Node score="-0.08502691">
+											<SimplePredicate field="x3" operator="greaterOrEqual" value="4.8500004"/>
+											<Node score="0.03146656">
+												<SimplePredicate field="x1" operator="greaterOrEqual" value="6.6"/>
+											</Node>
+										</Node>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="17">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x1"/>
+									<MiningField name="x4"/>
+								</MiningSchema>
+								<Node score="-0.04880028">
+									<True/>
+									<Node score="0.07891175">
+										<SimplePredicate field="x1" operator="greaterOrEqual" value="5.45"/>
+										<Node score="-0.045110255">
+											<SimplePredicate field="x4" operator="greaterOrEqual" value="1.75"/>
+										</Node>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="18">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x1"/>
+									<MiningField name="x3"/>
+								</MiningSchema>
+								<Node score="-0.048361223">
+									<True/>
+									<Node score="0.078898914">
+										<SimplePredicate field="x1" operator="greaterOrEqual" value="5.1499996"/>
+										<Node score="-0.03204696">
+											<SimplePredicate field="x3" operator="greaterOrEqual" value="4.8500004"/>
+										</Node>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="19">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x1"/>
+									<MiningField name="x4"/>
+								</MiningSchema>
+								<Node score="-0.040975895">
+									<True/>
+									<Node score="-0.041012026">
+										<SimplePredicate field="x4" operator="greaterOrEqual" value="1.75"/>
+									</Node>
+									<Node score="0.07121931">
+										<SimplePredicate field="x1" operator="greaterOrEqual" value="5.45"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="20">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x1"/>
+									<MiningField name="x3"/>
+								</MiningSchema>
+								<Node score="-0.039967366">
+									<True/>
+									<Node score="0.07783">
+										<SimplePredicate field="x1" operator="greaterOrEqual" value="5.45"/>
+										<Node score="-0.02883809">
+											<SimplePredicate field="x3" operator="greaterOrEqual" value="4.8500004"/>
+										</Node>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="21">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x1"/>
+									<MiningField name="x4"/>
+								</MiningSchema>
+								<Node score="-0.03722162">
+									<True/>
+									<Node score="0.06417543">
+										<SimplePredicate field="x1" operator="greaterOrEqual" value="5.45"/>
+										<Node score="-0.033984594">
+											<SimplePredicate field="x4" operator="greaterOrEqual" value="1.75"/>
+										</Node>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="22">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x1"/>
+									<MiningField name="x4"/>
+								</MiningSchema>
+								<Node score="-0.036332697">
+									<True/>
+									<Node score="0.060941923">
+										<SimplePredicate field="x1" operator="greaterOrEqual" value="5.45"/>
+										<Node score="-0.03048785">
+											<SimplePredicate field="x4" operator="greaterOrEqual" value="1.75"/>
+										</Node>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="23">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x1"/>
+									<MiningField name="x4"/>
+								</MiningSchema>
+								<Node score="-0.035405044">
+									<True/>
+									<Node score="0.057899117">
+										<SimplePredicate field="x1" operator="greaterOrEqual" value="5.45"/>
+										<Node score="-0.027365454">
+											<SimplePredicate field="x4" operator="greaterOrEqual" value="1.75"/>
+										</Node>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="24">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x1"/>
+									<MiningField name="x4"/>
+								</MiningSchema>
+								<Node score="-0.034453243">
+									<True/>
+									<Node score="0.055037603">
+										<SimplePredicate field="x1" operator="greaterOrEqual" value="5.45"/>
+										<Node score="-0.02457339">
+											<SimplePredicate field="x4" operator="greaterOrEqual" value="1.75"/>
+										</Node>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="25">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x1"/>
+									<MiningField name="x4"/>
+								</MiningSchema>
+								<Node score="-0.030481556">
+									<True/>
+									<Node score="0.050566826">
+										<SimplePredicate field="x1" operator="greaterOrEqual" value="5.45"/>
+										<Node score="-0.023867173">
+											<SimplePredicate field="x4" operator="greaterOrEqual" value="1.75"/>
+										</Node>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="26">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x1"/>
+									<MiningField name="x3"/>
+								</MiningSchema>
+								<Node score="-0.029884137">
+									<True/>
+									<Node score="0.034298442">
+										<SimplePredicate field="x1" operator="greaterOrEqual" value="5.45"/>
+										<Node score="-0.005248936">
+											<SimplePredicate field="x3" operator="greaterOrEqual" value="4.95"/>
+										</Node>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="27">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x1"/>
+								</MiningSchema>
+								<Node score="-0.02924787">
+									<True/>
+									<Node score="0.020404164">
+										<SimplePredicate field="x1" operator="greaterOrEqual" value="5.45"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="28">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x1"/>
+								</MiningSchema>
+								<Node score="-0.02573684">
+									<True/>
+									<Node score="0.017334804">
+										<SimplePredicate field="x1" operator="greaterOrEqual" value="5.45"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="29">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x1"/>
+								</MiningSchema>
+								<Node score="-0.02538635">
+									<True/>
+									<Node score="0.017322527">
+										<SimplePredicate field="x1" operator="greaterOrEqual" value="5.45"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="30">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x1"/>
+								</MiningSchema>
+								<Node score="-0.024984734">
+									<True/>
+									<Node score="0.017253518">
+										<SimplePredicate field="x1" operator="greaterOrEqual" value="5.45"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="31">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x1"/>
+								</MiningSchema>
+								<Node score="-0.024330502">
+									<True/>
+									<Node score="0.016203968">
+										<SimplePredicate field="x1" operator="greaterOrEqual" value="5.45"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="32">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x3"/>
+								</MiningSchema>
+								<Node score="0.01664313">
+									<True/>
+									<Node score="-0.020765025">
+										<SimplePredicate field="x3" operator="greaterOrEqual" value="4.8500004"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="33">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x1"/>
+								</MiningSchema>
+								<Node score="-0.024044823">
+									<True/>
+									<Node score="0.016362669">
+										<SimplePredicate field="x1" operator="greaterOrEqual" value="5.45"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="34">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x1"/>
+								</MiningSchema>
+								<Node score="-0.02336575">
+									<True/>
+									<Node score="0.015374564">
+										<SimplePredicate field="x1" operator="greaterOrEqual" value="5.45"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="35">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x3"/>
+								</MiningSchema>
+								<Node score="0.014888805">
+									<True/>
+									<Node score="-0.019351292">
+										<SimplePredicate field="x3" operator="greaterOrEqual" value="4.8500004"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="36">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x1"/>
+								</MiningSchema>
+								<Node score="-0.022925358">
+									<True/>
+									<Node score="0.015508335">
+										<SimplePredicate field="x1" operator="greaterOrEqual" value="5.45"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="37">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x1"/>
+								</MiningSchema>
+								<Node score="-0.020029932">
+									<True/>
+									<Node score="0.0130963875">
+										<SimplePredicate field="x1" operator="greaterOrEqual" value="5.45"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="38">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x1"/>
+								</MiningSchema>
+								<Node score="-0.019809717">
+									<True/>
+									<Node score="0.013367172">
+										<SimplePredicate field="x1" operator="greaterOrEqual" value="5.45"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="39">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x1"/>
+								</MiningSchema>
+								<Node score="-0.01954877">
+									<True/>
+									<Node score="0.013543361">
+										<SimplePredicate field="x1" operator="greaterOrEqual" value="5.45"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="40">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x4"/>
+								</MiningSchema>
+								<Node score="0.01517109">
+									<True/>
+									<Node score="-0.0144592505">
+										<SimplePredicate field="x4" operator="greaterOrEqual" value="1.55"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="41">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x1"/>
+								</MiningSchema>
+								<Node score="-0.01888067">
+									<True/>
+									<Node score="0.013541615">
+										<SimplePredicate field="x1" operator="greaterOrEqual" value="5.45"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="42">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x1"/>
+								</MiningSchema>
+								<Node score="-0.018588053">
+									<True/>
+									<Node score="0.0135657815">
+										<SimplePredicate field="x1" operator="greaterOrEqual" value="5.45"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="43">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x1"/>
+								</MiningSchema>
+								<Node score="-0.018271264">
+									<True/>
+									<Node score="0.013537717">
+										<SimplePredicate field="x1" operator="greaterOrEqual" value="5.45"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="44">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x1"/>
+								</MiningSchema>
+								<Node score="-0.016508821">
+									<True/>
+									<Node score="0.015156013">
+										<SimplePredicate field="x1" operator="greaterOrEqual" value="5.75"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="45">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x1"/>
+								</MiningSchema>
+								<Node score="-0.01612578">
+									<True/>
+									<Node score="0.015144992">
+										<SimplePredicate field="x1" operator="greaterOrEqual" value="5.75"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="46">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x1"/>
+								</MiningSchema>
+								<Node score="-0.017451681">
+									<True/>
+									<Node score="0.013699963">
+										<SimplePredicate field="x1" operator="greaterOrEqual" value="5.45"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="47">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x1"/>
+								</MiningSchema>
+								<Node score="-0.015729131">
+									<True/>
+									<Node score="0.015133322">
+										<SimplePredicate field="x1" operator="greaterOrEqual" value="5.75"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="48">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x1"/>
+								</MiningSchema>
+								<Node score="-0.01533375">
+									<True/>
+									<Node score="0.015006408">
+										<SimplePredicate field="x1" operator="greaterOrEqual" value="5.75"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="49">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x1"/>
+								</MiningSchema>
+								<Node score="-0.01495316">
+									<True/>
+									<Node score="0.014858848">
+										<SimplePredicate field="x1" operator="greaterOrEqual" value="5.75"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="50">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x1"/>
+								</MiningSchema>
+								<Node score="-0.01628881">
+									<True/>
+									<Node score="0.0134786125">
+										<SimplePredicate field="x1" operator="greaterOrEqual" value="5.45"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="51">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x1"/>
+								</MiningSchema>
+								<Node score="-0.014543994">
+									<True/>
+									<Node score="0.014626642">
+										<SimplePredicate field="x1" operator="greaterOrEqual" value="5.75"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="52">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x1"/>
+								</MiningSchema>
+								<Node score="-0.014166157">
+									<True/>
+									<Node score="0.01442798">
+										<SimplePredicate field="x1" operator="greaterOrEqual" value="5.75"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="53">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x4"/>
+								</MiningSchema>
+								<Node score="0.01607582">
+									<True/>
+									<Node score="-0.013338915">
+										<SimplePredicate field="x4" operator="greaterOrEqual" value="1.55"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="54">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x1"/>
+								</MiningSchema>
+								<Node score="-0.014383693">
+									<True/>
+									<Node score="0.014787385">
+										<SimplePredicate field="x1" operator="greaterOrEqual" value="5.75"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="55">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x4"/>
+								</MiningSchema>
+								<Node score="0.014934946">
+									<True/>
+									<Node score="-0.012281749">
+										<SimplePredicate field="x4" operator="greaterOrEqual" value="1.55"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="56">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x1"/>
+								</MiningSchema>
+								<Node score="-0.014311422">
+									<True/>
+									<Node score="0.014686523">
+										<SimplePredicate field="x1" operator="greaterOrEqual" value="5.75"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="57">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x1"/>
+								</MiningSchema>
+								<Node score="-0.013701648">
+									<True/>
+									<Node score="0.014101173">
+										<SimplePredicate field="x1" operator="greaterOrEqual" value="5.75"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="58">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x1"/>
+								</MiningSchema>
+								<Node score="-0.014634443">
+									<True/>
+									<Node score="0.012440075">
+										<SimplePredicate field="x1" operator="greaterOrEqual" value="5.45"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="59">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x4"/>
+								</MiningSchema>
+								<Node score="0.014384781">
+									<True/>
+									<Node score="-0.011855971">
+										<SimplePredicate field="x4" operator="greaterOrEqual" value="1.55"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="60">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x1"/>
+								</MiningSchema>
+								<Node score="-0.0137518775">
+									<True/>
+									<Node score="0.014004396">
+										<SimplePredicate field="x1" operator="greaterOrEqual" value="5.75"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="61">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x1"/>
+								</MiningSchema>
+								<Node score="-0.012715513">
+									<True/>
+									<Node score="0.012868284">
+										<SimplePredicate field="x1" operator="greaterOrEqual" value="5.75"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="62">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x4"/>
+								</MiningSchema>
+								<Node score="0.014003075">
+									<True/>
+									<Node score="-0.011818775">
+										<SimplePredicate field="x4" operator="greaterOrEqual" value="1.55"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="63">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x1"/>
+								</MiningSchema>
+								<Node score="-0.012556411">
+									<True/>
+									<Node score="0.012629368">
+										<SimplePredicate field="x1" operator="greaterOrEqual" value="5.75"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="64">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x4"/>
+								</MiningSchema>
+								<Node score="0.013200781">
+									<True/>
+									<Node score="-0.011214634">
+										<SimplePredicate field="x4" operator="greaterOrEqual" value="1.55"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="65">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x1"/>
+								</MiningSchema>
+								<Node score="-0.012340105">
+									<True/>
+									<Node score="0.012310852">
+										<SimplePredicate field="x1" operator="greaterOrEqual" value="5.75"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="66">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x4"/>
+								</MiningSchema>
+								<Node score="0.012503187">
+									<True/>
+									<Node score="-0.010712485">
+										<SimplePredicate field="x4" operator="greaterOrEqual" value="1.55"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="67">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x1"/>
+								</MiningSchema>
+								<Node score="-0.012080449">
+									<True/>
+									<Node score="0.011945288">
+										<SimplePredicate field="x1" operator="greaterOrEqual" value="5.75"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="68">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x4"/>
+								</MiningSchema>
+								<Node score="0.011890448">
+									<True/>
+									<Node score="-0.010282951">
+										<SimplePredicate field="x4" operator="greaterOrEqual" value="1.55"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="69">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x1"/>
+								</MiningSchema>
+								<Node score="-0.01179004">
+									<True/>
+									<Node score="0.011554559">
+										<SimplePredicate field="x1" operator="greaterOrEqual" value="5.75"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="70">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x1"/>
+								</MiningSchema>
+								<Node score="-0.010860491">
+									<True/>
+									<Node score="0.010560704">
+										<SimplePredicate field="x1" operator="greaterOrEqual" value="5.75"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="71">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x4"/>
+								</MiningSchema>
+								<Node score="0.011803684">
+									<True/>
+									<Node score="-0.010417486">
+										<SimplePredicate field="x4" operator="greaterOrEqual" value="1.55"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="72">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x1"/>
+								</MiningSchema>
+								<Node score="-0.010656967">
+									<True/>
+									<Node score="0.0103234695">
+										<SimplePredicate field="x1" operator="greaterOrEqual" value="5.75"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="73">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x4"/>
+								</MiningSchema>
+								<Node score="0.011229504">
+									<True/>
+									<Node score="-0.009955911">
+										<SimplePredicate field="x4" operator="greaterOrEqual" value="1.55"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="74">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x1"/>
+								</MiningSchema>
+								<Node score="-0.010425884">
+									<True/>
+									<Node score="0.010045193">
+										<SimplePredicate field="x1" operator="greaterOrEqual" value="5.75"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="75">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x4"/>
+								</MiningSchema>
+								<Node score="0.010715603">
+									<True/>
+									<Node score="-0.009555014">
+										<SimplePredicate field="x4" operator="greaterOrEqual" value="1.55"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="76">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x1"/>
+								</MiningSchema>
+								<Node score="-0.010174845">
+									<True/>
+									<Node score="0.009743867">
+										<SimplePredicate field="x1" operator="greaterOrEqual" value="5.75"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="77">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x4"/>
+								</MiningSchema>
+								<Node score="0.010251351">
+									<True/>
+									<Node score="-0.009198429">
+										<SimplePredicate field="x4" operator="greaterOrEqual" value="1.55"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="78">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x1"/>
+								</MiningSchema>
+								<Node score="-0.009910368">
+									<True/>
+									<Node score="0.009431692">
+										<SimplePredicate field="x1" operator="greaterOrEqual" value="5.75"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="79">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x4"/>
+								</MiningSchema>
+								<Node score="0.009828368">
+									<True/>
+									<Node score="-0.008874634">
+										<SimplePredicate field="x4" operator="greaterOrEqual" value="1.55"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="80">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x1"/>
+								</MiningSchema>
+								<Node score="-0.00963771">
+									<True/>
+									<Node score="0.009116781">
+										<SimplePredicate field="x1" operator="greaterOrEqual" value="5.75"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="81">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x3"/>
+								</MiningSchema>
+								<Node score="0.008846115">
+									<True/>
+									<Node score="-0.0096405">
+										<SimplePredicate field="x3" operator="greaterOrEqual" value="4.8500004"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="82">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x1"/>
+								</MiningSchema>
+								<Node score="-0.009582864">
+									<True/>
+									<Node score="0.0089328">
+										<SimplePredicate field="x1" operator="greaterOrEqual" value="5.75"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="83">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x3"/>
+								</MiningSchema>
+								<Node score="0.008630527">
+									<True/>
+									<Node score="-0.00952812">
+										<SimplePredicate field="x3" operator="greaterOrEqual" value="4.8500004"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="84">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x1"/>
+								</MiningSchema>
+								<Node score="-0.010476393">
+									<True/>
+									<Node score="0.007964549">
+										<SimplePredicate field="x1" operator="greaterOrEqual" value="5.45"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="85">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x4"/>
+								</MiningSchema>
+								<Node score="0.009221407">
+									<True/>
+									<Node score="-0.008715885">
+										<SimplePredicate field="x4" operator="greaterOrEqual" value="1.55"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="86">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x1"/>
+								</MiningSchema>
+								<Node score="-0.009389507">
+									<True/>
+									<Node score="0.008576493">
+										<SimplePredicate field="x1" operator="greaterOrEqual" value="5.75"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="87">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x3"/>
+								</MiningSchema>
+								<Node score="0.008527694">
+									<True/>
+									<Node score="-0.009553915">
+										<SimplePredicate field="x3" operator="greaterOrEqual" value="4.8500004"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="88">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x1"/>
+								</MiningSchema>
+								<Node score="-0.00929538">
+									<True/>
+									<Node score="0.008439531">
+										<SimplePredicate field="x1" operator="greaterOrEqual" value="5.75"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="89">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x3"/>
+								</MiningSchema>
+								<Node score="0.008362654">
+									<True/>
+									<Node score="-0.009419529">
+										<SimplePredicate field="x3" operator="greaterOrEqual" value="4.8500004"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="90">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x1"/>
+								</MiningSchema>
+								<Node score="-0.009190782">
+									<True/>
+									<Node score="0.008311339">
+										<SimplePredicate field="x1" operator="greaterOrEqual" value="5.75"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="91">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x4"/>
+								</MiningSchema>
+								<Node score="0.008953804">
+									<True/>
+									<Node score="-0.0085425135">
+										<SimplePredicate field="x4" operator="greaterOrEqual" value="1.55"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="92">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x1"/>
+								</MiningSchema>
+								<Node score="-0.008880297">
+									<True/>
+									<Node score="0.008074921">
+										<SimplePredicate field="x1" operator="greaterOrEqual" value="5.75"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="93">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x3"/>
+								</MiningSchema>
+								<Node score="0.008429253">
+									<True/>
+									<Node score="-0.009449248">
+										<SimplePredicate field="x3" operator="greaterOrEqual" value="4.8500004"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="94">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x1"/>
+								</MiningSchema>
+								<Node score="-0.008969381">
+									<True/>
+									<Node score="0.008125593">
+										<SimplePredicate field="x1" operator="greaterOrEqual" value="5.75"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="95">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x3"/>
+								</MiningSchema>
+								<Node score="0.008087372">
+									<True/>
+									<Node score="-0.009106579">
+										<SimplePredicate field="x3" operator="greaterOrEqual" value="4.8500004"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="96">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x1"/>
+								</MiningSchema>
+								<Node score="-0.008866724">
+									<True/>
+									<Node score="0.008008748">
+										<SimplePredicate field="x1" operator="greaterOrEqual" value="5.75"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="97">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x4"/>
+								</MiningSchema>
+								<Node score="0.00864299">
+									<True/>
+									<Node score="-0.008287055">
+										<SimplePredicate field="x4" operator="greaterOrEqual" value="1.55"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="98">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x1"/>
+								</MiningSchema>
+								<Node score="-0.008566402">
+									<True/>
+									<Node score="0.007783816">
+										<SimplePredicate field="x1" operator="greaterOrEqual" value="5.75"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="99">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x3"/>
+								</MiningSchema>
+								<Node score="0.0081636105">
+									<True/>
+									<Node score="-0.009136218">
+										<SimplePredicate field="x3" operator="greaterOrEqual" value="4.8500004"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="100">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x1"/>
+								</MiningSchema>
+								<Node score="-0.008503229">
+									<True/>
+									<Node score="0.0076931003">
+										<SimplePredicate field="x1" operator="greaterOrEqual" value="5.75"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+					</Segmentation>
+				</MiningModel>
+			</Segment>
+			<Segment id="3">
+				<True/>
+				<MiningModel functionName="regression" x-mathContext="float">
+					<MiningSchema>
+						<MiningField name="x1"/>
+						<MiningField name="x2"/>
+						<MiningField name="x3"/>
+						<MiningField name="x4"/>
+					</MiningSchema>
+					<Output>
+						<OutputField name="xgbValue(2)" optype="continuous" dataType="float" isFinalResult="false"/>
+					</Output>
+					<Targets>
+						<Target rescaleConstant="0.5"/>
+					</Targets>
+					<Segmentation multipleModelMethod="sum">
+						<Segment id="1">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x3"/>
+									<MiningField name="x4"/>
+								</MiningSchema>
+								<Node score="-0.21779363">
+									<True/>
+									<Node score="0.12413793">
+										<SimplePredicate field="x3" operator="greaterOrEqual" value="4.8500004"/>
+										<Node score="0.41652894">
+											<SimplePredicate field="x3" operator="greaterOrEqual" value="5.05"/>
+										</Node>
+									</Node>
+									<Node score="-0.03600001">
+										<SimplePredicate field="x4" operator="greaterOrEqual" value="1.55"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="2">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x3"/>
+									<MiningField name="x4"/>
+								</MiningSchema>
+								<Node score="-0.19456734">
+									<True/>
+									<Node score="0.068372615">
+										<SimplePredicate field="x3" operator="greaterOrEqual" value="4.8500004"/>
+										<Node score="0.29694963">
+											<SimplePredicate field="x4" operator="greaterOrEqual" value="1.75"/>
+										</Node>
+									</Node>
+									<Node score="-0.02345691">
+										<SimplePredicate field="x4" operator="greaterOrEqual" value="1.55"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="3">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x3"/>
+									<MiningField name="x4"/>
+								</MiningSchema>
+								<Node score="-0.17890616">
+									<True/>
+									<Node score="0.05449441">
+										<SimplePredicate field="x3" operator="greaterOrEqual" value="4.8500004"/>
+										<Node score="0.23616987">
+											<SimplePredicate field="x4" operator="greaterOrEqual" value="1.75"/>
+										</Node>
+									</Node>
+									<Node score="-0.012078275">
+										<SimplePredicate field="x4" operator="greaterOrEqual" value="1.55"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="4">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x3"/>
+									<MiningField name="x4"/>
+								</MiningSchema>
+								<Node score="-0.16722214">
+									<True/>
+									<Node score="0.03707709">
+										<SimplePredicate field="x3" operator="greaterOrEqual" value="4.8500004"/>
+										<Node score="0.20365882">
+											<SimplePredicate field="x3" operator="greaterOrEqual" value="5.05"/>
+										</Node>
+									</Node>
+									<Node score="-0.007571801">
+										<SimplePredicate field="x4" operator="greaterOrEqual" value="1.55"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="5">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x3"/>
+									<MiningField name="x4"/>
+								</MiningSchema>
+								<Node score="-0.1581662">
+									<True/>
+									<Node score="0.019292431">
+										<SimplePredicate field="x3" operator="greaterOrEqual" value="4.8500004"/>
+										<Node score="0.1838822">
+											<SimplePredicate field="x4" operator="greaterOrEqual" value="1.75"/>
+										</Node>
+									</Node>
+									<Node score="-0.0037255767">
+										<SimplePredicate field="x4" operator="greaterOrEqual" value="1.55"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="6">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x3"/>
+									<MiningField name="x4"/>
+								</MiningSchema>
+								<Node score="-0.15062141">
+									<True/>
+									<Node score="0.011659943">
+										<SimplePredicate field="x3" operator="greaterOrEqual" value="4.8500004"/>
+										<Node score="0.16870046">
+											<SimplePredicate field="x4" operator="greaterOrEqual" value="1.75"/>
+										</Node>
+									</Node>
+									<Node score="-6.7198265E-4">
+										<SimplePredicate field="x4" operator="greaterOrEqual" value="1.55"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="7">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x2"/>
+									<MiningField name="x3"/>
+									<MiningField name="x4"/>
+								</MiningSchema>
+								<Node score="-0.14896123">
+									<True/>
+									<Node score="0.15653485">
+										<SimplePredicate field="x3" operator="greaterOrEqual" value="5.05"/>
+									</Node>
+									<Node score="0.13790253">
+										<SimplePredicate field="x4" operator="greaterOrEqual" value="1.6500001"/>
+										<Node score="-0.037908006">
+											<SimplePredicate field="x2" operator="greaterOrEqual" value="2.9"/>
+										</Node>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="8">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x2"/>
+									<MiningField name="x3"/>
+									<MiningField name="x4"/>
+								</MiningSchema>
+								<Node score="-0.14220156">
+									<True/>
+									<Node score="0.14599961">
+										<SimplePredicate field="x3" operator="greaterOrEqual" value="5.05"/>
+									</Node>
+									<Node score="0.12599412">
+										<SimplePredicate field="x4" operator="greaterOrEqual" value="1.6500001"/>
+										<Node score="-0.03658183">
+											<SimplePredicate field="x2" operator="greaterOrEqual" value="2.9"/>
+										</Node>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="9">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x2"/>
+									<MiningField name="x3"/>
+									<MiningField name="x4"/>
+								</MiningSchema>
+								<Node score="0.009457309">
+									<True/>
+									<Node score="-0.012458378">
+										<SimplePredicate field="x3" operator="greaterOrEqual" value="4.8500004"/>
+										<Node score="0.14244832">
+											<SimplePredicate field="x4" operator="greaterOrEqual" value="1.75"/>
+										</Node>
+									</Node>
+									<Node score="-0.13297482">
+										<SimplePredicate field="x2" operator="greaterOrEqual" value="2.55"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="10">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x1"/>
+									<MiningField name="x3"/>
+									<MiningField name="x4"/>
+								</MiningSchema>
+								<Node score="-0.12978825">
+									<True/>
+									<Node score="0.12946607">
+										<SimplePredicate field="x3" operator="greaterOrEqual" value="5.05"/>
+									</Node>
+									<Node score="0.05459902">
+										<SimplePredicate field="x4" operator="greaterOrEqual" value="1.6500001"/>
+										<Node score="0.009963222">
+											<SimplePredicate field="x1" operator="greaterOrEqual" value="6.0"/>
+										</Node>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="11">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x1"/>
+									<MiningField name="x3"/>
+									<MiningField name="x4"/>
+								</MiningSchema>
+								<Node score="-0.122823425">
+									<True/>
+									<Node score="0.121205375">
+										<SimplePredicate field="x3" operator="greaterOrEqual" value="5.05"/>
+									</Node>
+									<Node score="0.04715446">
+										<SimplePredicate field="x4" operator="greaterOrEqual" value="1.6500001"/>
+										<Node score="0.008430424">
+											<SimplePredicate field="x1" operator="greaterOrEqual" value="6.0"/>
+										</Node>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="12">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x1"/>
+									<MiningField name="x3"/>
+									<MiningField name="x4"/>
+								</MiningSchema>
+								<Node score="-0.115668535">
+									<True/>
+									<Node score="0.11325924">
+										<SimplePredicate field="x3" operator="greaterOrEqual" value="5.05"/>
+									</Node>
+									<Node score="0.04075426">
+										<SimplePredicate field="x4" operator="greaterOrEqual" value="1.6500001"/>
+										<Node score="0.007199349">
+											<SimplePredicate field="x1" operator="greaterOrEqual" value="6.0"/>
+										</Node>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="13">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x1"/>
+									<MiningField name="x3"/>
+									<MiningField name="x4"/>
+								</MiningSchema>
+								<Node score="-0.10905444">
+									<True/>
+									<Node score="0.10685194">
+										<SimplePredicate field="x3" operator="greaterOrEqual" value="5.05"/>
+									</Node>
+									<Node score="0.036058497">
+										<SimplePredicate field="x4" operator="greaterOrEqual" value="1.6500001"/>
+										<Node score="0.007441684">
+											<SimplePredicate field="x1" operator="greaterOrEqual" value="6.0"/>
+										</Node>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="14">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x1"/>
+									<MiningField name="x3"/>
+									<MiningField name="x4"/>
+								</MiningSchema>
+								<Node score="-0.10251799">
+									<True/>
+									<Node score="0.10113458">
+										<SimplePredicate field="x3" operator="greaterOrEqual" value="5.05"/>
+									</Node>
+									<Node score="0.02799943">
+										<SimplePredicate field="x4" operator="greaterOrEqual" value="1.6500001"/>
+										<Node score="0.006705011">
+											<SimplePredicate field="x1" operator="greaterOrEqual" value="6.0"/>
+										</Node>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="15">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x2"/>
+									<MiningField name="x3"/>
+									<MiningField name="x4"/>
+								</MiningSchema>
+								<Node score="0.004581966">
+									<True/>
+									<Node score="-0.030095227">
+										<SimplePredicate field="x3" operator="greaterOrEqual" value="4.8500004"/>
+										<Node score="0.11063999">
+											<SimplePredicate field="x4" operator="greaterOrEqual" value="1.75"/>
+										</Node>
+									</Node>
+									<Node score="-0.09646121">
+										<SimplePredicate field="x2" operator="greaterOrEqual" value="2.95"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="16">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x2"/>
+									<MiningField name="x3"/>
+								</MiningSchema>
+								<Node score="0.03504592">
+									<True/>
+									<Node score="0.089317806">
+										<SimplePredicate field="x3" operator="greaterOrEqual" value="5.05"/>
+									</Node>
+									<Node score="-0.07924603">
+										<SimplePredicate field="x2" operator="greaterOrEqual" value="2.85"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="17">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x3"/>
+									<MiningField name="x4"/>
+								</MiningSchema>
+								<Node score="-0.08724746">
+									<True/>
+									<Node score="0.084051">
+										<SimplePredicate field="x3" operator="greaterOrEqual" value="5.05"/>
+									</Node>
+									<Node score="0.018633476">
+										<SimplePredicate field="x4" operator="greaterOrEqual" value="1.6500001"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="18">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x2"/>
+									<MiningField name="x3"/>
+								</MiningSchema>
+								<Node score="0.03140496">
+									<True/>
+									<Node score="0.07965872">
+										<SimplePredicate field="x3" operator="greaterOrEqual" value="5.05"/>
+									</Node>
+									<Node score="-0.06971141">
+										<SimplePredicate field="x2" operator="greaterOrEqual" value="2.85"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="19">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x1"/>
+									<MiningField name="x3"/>
+								</MiningSchema>
+								<Node score="-0.047925066">
+									<True/>
+									<Node score="0.0876965">
+										<SimplePredicate field="x3" operator="greaterOrEqual" value="4.8500004"/>
+										<Node score="-0.012093311">
+											<SimplePredicate field="x1" operator="greaterOrEqual" value="6.6"/>
+										</Node>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="20">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x1"/>
+									<MiningField name="x4"/>
+								</MiningSchema>
+								<Node score="-0.054759476">
+									<True/>
+									<Node score="0.05301296">
+										<SimplePredicate field="x4" operator="greaterOrEqual" value="1.55"/>
+										<Node score="0.008795736">
+											<SimplePredicate field="x1" operator="greaterOrEqual" value="6.3500004"/>
+										</Node>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="21">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x3"/>
+								</MiningSchema>
+								<Node score="-0.04448989">
+									<True/>
+									<Node score="0.045654103">
+										<SimplePredicate field="x3" operator="greaterOrEqual" value="4.8500004"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="22">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x3"/>
+								</MiningSchema>
+								<Node score="-0.04199765">
+									<True/>
+									<Node score="0.04308606">
+										<SimplePredicate field="x3" operator="greaterOrEqual" value="4.8500004"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="23">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x3"/>
+								</MiningSchema>
+								<Node score="-0.03972536">
+									<True/>
+									<Node score="0.04080764">
+										<SimplePredicate field="x3" operator="greaterOrEqual" value="4.8500004"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="24">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x2"/>
+								</MiningSchema>
+								<Node score="0.04872109">
+									<True/>
+									<Node score="-0.030633265">
+										<SimplePredicate field="x2" operator="greaterOrEqual" value="2.85"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="25">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x3"/>
+								</MiningSchema>
+								<Node score="-0.039543193">
+									<True/>
+									<Node score="0.041087057">
+										<SimplePredicate field="x3" operator="greaterOrEqual" value="4.8500004"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="26">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x3"/>
+								</MiningSchema>
+								<Node score="-0.03747153">
+									<True/>
+									<Node score="0.038964503">
+										<SimplePredicate field="x3" operator="greaterOrEqual" value="4.8500004"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="27">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x2"/>
+								</MiningSchema>
+								<Node score="0.045419186">
+									<True/>
+									<Node score="-0.028804144">
+										<SimplePredicate field="x2" operator="greaterOrEqual" value="2.85"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="28">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x3"/>
+								</MiningSchema>
+								<Node score="-0.0363338">
+									<True/>
+									<Node score="0.03833556">
+										<SimplePredicate field="x3" operator="greaterOrEqual" value="4.8500004"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="29">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x3"/>
+								</MiningSchema>
+								<Node score="-0.03415753">
+									<True/>
+									<Node score="0.036296993">
+										<SimplePredicate field="x3" operator="greaterOrEqual" value="4.8500004"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="30">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x4"/>
+								</MiningSchema>
+								<Node score="-0.026390018">
+									<True/>
+									<Node score="0.042758834">
+										<SimplePredicate field="x4" operator="greaterOrEqual" value="1.75"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="31">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x2"/>
+								</MiningSchema>
+								<Node score="0.042829398">
+									<True/>
+									<Node score="-0.025439082">
+										<SimplePredicate field="x2" operator="greaterOrEqual" value="2.85"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="32">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x3"/>
+								</MiningSchema>
+								<Node score="-0.033321563">
+									<True/>
+									<Node score="0.036925282">
+										<SimplePredicate field="x3" operator="greaterOrEqual" value="4.8500004"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="33">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x4"/>
+								</MiningSchema>
+								<Node score="-0.025043944">
+									<True/>
+									<Node score="0.041091587">
+										<SimplePredicate field="x4" operator="greaterOrEqual" value="1.75"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="34">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x2"/>
+								</MiningSchema>
+								<Node score="0.040898647">
+									<True/>
+									<Node score="-0.024463804">
+										<SimplePredicate field="x2" operator="greaterOrEqual" value="2.85"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="35">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x3"/>
+								</MiningSchema>
+								<Node score="-0.03124012">
+									<True/>
+									<Node score="0.03486401">
+										<SimplePredicate field="x3" operator="greaterOrEqual" value="4.8500004"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="36">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x2"/>
+								</MiningSchema>
+								<Node score="0.0386251">
+									<True/>
+									<Node score="-0.023728361">
+										<SimplePredicate field="x2" operator="greaterOrEqual" value="2.85"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="37">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x3"/>
+								</MiningSchema>
+								<Node score="-0.029731171">
+									<True/>
+									<Node score="0.03252116">
+										<SimplePredicate field="x3" operator="greaterOrEqual" value="4.8500004"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="38">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x3"/>
+								</MiningSchema>
+								<Node score="-0.02805776">
+									<True/>
+									<Node score="0.030738207">
+										<SimplePredicate field="x3" operator="greaterOrEqual" value="4.8500004"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="39">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x2"/>
+								</MiningSchema>
+								<Node score="0.0354894">
+									<True/>
+									<Node score="-0.022020765">
+										<SimplePredicate field="x2" operator="greaterOrEqual" value="2.95"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="40">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x3"/>
+								</MiningSchema>
+								<Node score="-0.028023772">
+									<True/>
+									<Node score="0.030822983">
+										<SimplePredicate field="x3" operator="greaterOrEqual" value="4.8500004"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="41">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x3"/>
+								</MiningSchema>
+								<Node score="-0.0262672">
+									<True/>
+									<Node score="0.027576344">
+										<SimplePredicate field="x3" operator="greaterOrEqual" value="4.8500004"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="42">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x3"/>
+								</MiningSchema>
+								<Node score="-0.024831915">
+									<True/>
+									<Node score="0.026238846">
+										<SimplePredicate field="x3" operator="greaterOrEqual" value="4.8500004"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="43">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x3"/>
+								</MiningSchema>
+								<Node score="-0.023503663">
+									<True/>
+									<Node score="0.025011685">
+										<SimplePredicate field="x3" operator="greaterOrEqual" value="4.8500004"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="44">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x3"/>
+								</MiningSchema>
+								<Node score="-0.022274155">
+									<True/>
+									<Node score="0.023883158">
+										<SimplePredicate field="x3" operator="greaterOrEqual" value="4.8500004"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="45">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x3"/>
+								</MiningSchema>
+								<Node score="-0.021169294">
+									<True/>
+									<Node score="0.022904621">
+										<SimplePredicate field="x3" operator="greaterOrEqual" value="4.8500004"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="46">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x3"/>
+								</MiningSchema>
+								<Node score="-0.020144202">
+									<True/>
+									<Node score="0.022007428">
+										<SimplePredicate field="x3" operator="greaterOrEqual" value="4.8500004"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="47">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x3"/>
+								</MiningSchema>
+								<Node score="-0.019164367">
+									<True/>
+									<Node score="0.021136574">
+										<SimplePredicate field="x3" operator="greaterOrEqual" value="4.8500004"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="48">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x3"/>
+								</MiningSchema>
+								<Node score="-0.01829053">
+									<True/>
+									<Node score="0.020388527">
+										<SimplePredicate field="x3" operator="greaterOrEqual" value="4.8500004"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="49">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x3"/>
+								</MiningSchema>
+								<Node score="-0.0174784">
+									<True/>
+									<Node score="0.019696195">
+										<SimplePredicate field="x3" operator="greaterOrEqual" value="4.8500004"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="50">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x3"/>
+								</MiningSchema>
+								<Node score="-0.016723288">
+									<True/>
+									<Node score="0.01905368">
+										<SimplePredicate field="x3" operator="greaterOrEqual" value="4.8500004"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="51">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x3"/>
+								</MiningSchema>
+								<Node score="-0.01599461">
+									<True/>
+									<Node score="0.018414661">
+										<SimplePredicate field="x3" operator="greaterOrEqual" value="4.8500004"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="52">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x1"/>
+								</MiningSchema>
+								<Node score="0.013647149">
+									<True/>
+									<Node score="-0.010299313">
+										<SimplePredicate field="x1" operator="greaterOrEqual" value="6.1499996"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="53">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x3"/>
+								</MiningSchema>
+								<Node score="-0.016787779">
+									<True/>
+									<Node score="0.019171964">
+										<SimplePredicate field="x3" operator="greaterOrEqual" value="4.8500004"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="54">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x1"/>
+								</MiningSchema>
+								<Node score="0.012606605">
+									<True/>
+									<Node score="-0.010632953">
+										<SimplePredicate field="x1" operator="greaterOrEqual" value="6.1499996"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="55">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x1"/>
+								</MiningSchema>
+								<Node score="-0.011089489">
+									<True/>
+									<Node score="0.013351586">
+										<SimplePredicate field="x1" operator="greaterOrEqual" value="6.05"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="56">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x1"/>
+								</MiningSchema>
+								<Node score="-0.010494912">
+									<True/>
+									<Node score="0.01166933">
+										<SimplePredicate field="x1" operator="greaterOrEqual" value="6.05"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="57">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x1"/>
+								</MiningSchema>
+								<Node score="-0.010219891">
+									<True/>
+									<Node score="0.011761706">
+										<SimplePredicate field="x1" operator="greaterOrEqual" value="6.05"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="58">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x1"/>
+								</MiningSchema>
+								<Node score="-0.009957566">
+									<True/>
+									<Node score="0.011802944">
+										<SimplePredicate field="x1" operator="greaterOrEqual" value="6.05"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="59">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="0.002309523">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="60">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="0.001556686">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="61">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="0.0018214675">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="62">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="0.002012487">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="63">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="0.0013031526">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="64">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="0.0015574412">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="65">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="9.3152066E-4">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="66">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="0.0012263219">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="67">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="6.636197E-4">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="68">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="9.834822E-4">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="69">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="4.6969726E-4">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="70">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="8.038519E-4">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="71">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="0.001059142">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="72">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="5.331039E-4">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="73">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="8.182172E-4">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="74">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="3.4198584E-4">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="75">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="6.4455316E-4">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="76">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="2.0701316E-4">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="77">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="5.1856664E-4">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="78">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="1.117719E-4">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="79">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="4.2657522E-4">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="80">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="4.4647157E-5">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="81">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="3.5886967E-4">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="82">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="6.323325E-5">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="83">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="3.671999E-4">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="84">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="7.1573166E-5">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="85">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="3.5909007E-4">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="86">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="-8.0445525E-6">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="87">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="2.931223E-4">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="88">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="2.842377E-6">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="89">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="2.9692973E-4">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="90">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="8.732265E-6">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="91">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="2.9691093E-4">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="92">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="-5.364083E-5">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="93">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="x3"/>
+								</MiningSchema>
+								<Node score="-0.0041533187">
+									<True/>
+									<Node score="0.005049708">
+										<SimplePredicate field="x3" operator="greaterOrEqual" value="4.95"/>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="94">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="-1.5858008E-5">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="95">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="2.702058E-4">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="96">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="-8.786825E-6">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="97">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="2.7156717E-4">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="98">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="-6.5242064E-5">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="99">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="2.1643475E-4">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="100">
+							<True/>
+							<TreeModel functionName="regression" noTrueChildStrategy="returnLastPrediction" x-mathContext="float">
+								<MiningSchema/>
+								<Node score="-5.766953E-5">
+									<True/>
+								</Node>
+							</TreeModel>
+						</Segment>
+					</Segmentation>
+				</MiningModel>
+			</Segment>
+			<Segment id="4">
+				<True/>
+				<RegressionModel functionName="classification" normalizationMethod="softmax" x-mathContext="float">
+					<MiningSchema>
+						<MiningField name="y" usageType="target"/>
+						<MiningField name="xgbValue(0)"/>
+						<MiningField name="xgbValue(1)"/>
+						<MiningField name="xgbValue(2)"/>
+					</MiningSchema>
+					<Output>
+						<OutputField name="probability(0)" optype="continuous" dataType="float" feature="probability" value="0"/>
+						<OutputField name="probability(1)" optype="continuous" dataType="float" feature="probability" value="1"/>
+						<OutputField name="probability(2)" optype="continuous" dataType="float" feature="probability" value="2"/>
+					</Output>
+					<RegressionTable intercept="0.0" targetCategory="0">
+						<NumericPredictor name="xgbValue(0)" coefficient="1.0"/>
+					</RegressionTable>
+					<RegressionTable intercept="0.0" targetCategory="1">
+						<NumericPredictor name="xgbValue(1)" coefficient="1.0"/>
+					</RegressionTable>
+					<RegressionTable intercept="0.0" targetCategory="2">
+						<NumericPredictor name="xgbValue(2)" coefficient="1.0"/>
+					</RegressionTable>
+				</RegressionModel>
+			</Segment>
+		</Segmentation>
+	</MiningModel>
+</PMML>

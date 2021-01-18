@@ -1,0 +1,103 @@
+{
+  "clasz": "com.exceeddata.ac.spark.analytics.basis.regression.LinearRegressionBasis",
+  "model": {
+    "intercept": 40.4221999,
+    "coefficients": [
+      -0.12484738345735494,
+      0.06291561190099985,
+      0.04855844848368842,
+      4.58920973477669,
+      -20.063868266453444,
+      3.3251759417097646,
+      0.006858555054916261,
+      -1.6121397307263328,
+      0.35378676768146394,
+      -0.01227968822973993,
+      -0.9423703820544843,
+      0.009433056730265035,
+      -0.5806288602931988
+    ]
+  },
+  "basis": "LinearRegressionBasis",
+  "parameters": {
+    "topk": 3,
+    "op_name": "linear_regression",
+    "prediction_name": "prediction",
+    "caching": "memory"
+  },
+  "ensembles": {
+    "features": {
+      "types": [
+        "double",
+        "double",
+        "double",
+        "double",
+        "double",
+        "double",
+        "double",
+        "double",
+        "double",
+        "double",
+        "double",
+        "double",
+        "double"
+      ],
+      "names": [
+        "CRIM",
+        "ZN",
+        "INDUS",
+        "CHAS",
+        "NOX",
+        "RM",
+        "AGE",
+        "DIS",
+        "RAD",
+        "TAX",
+        "PTRATIO",
+        "B",
+        "LSTAT"
+      ],
+      "terms": {
+        "fields": [
+          "CRIM",
+          "ZN",
+          "INDUS",
+          "CHAS",
+          "NOX",
+          "RM",
+          "AGE",
+          "DIS",
+          "RAD",
+          "TAX",
+          "PTRATIO",
+          "B",
+          "LSTAT"
+        ],
+        "types": [
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4
+        ]
+      }
+    },
+    "outcome": {
+      "categorical": false,
+      "classes": 2,
+      "name": "label",
+      "term": {
+        "expression": "label"
+      },
+      "type": "double"
+    }
+  }
+}
