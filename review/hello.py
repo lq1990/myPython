@@ -233,3 +233,7 @@ obj = open("./test.csv", 'r+', encoding='utf-8')  # r+ 可以读和写
 print(obj.read())
 
 obj.close()
+
+
+
+
