@@ -1,9 +1,9 @@
 
 class StaticMethod:
-    abc = ''
+    abc = '' # field of this Clz
 
     def __init__(self, f0, f1, f2=2, f3=3):
-        self.f1 = f1
+        self.f1 = f1 # field of instance
         self.f2 = f2
 
     @staticmethod
